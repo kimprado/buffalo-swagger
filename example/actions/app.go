@@ -14,7 +14,7 @@ import (
 
 	"github.com/swaggo/buffalo-swagger/swaggerFiles"
 
-	_ "github.com/swaggo/buffalo-swagger/example/docs"
+	_ "github.com/kim/example/docs"
 )
 
 // ENV is used to help switch settings based on where the
@@ -64,6 +64,7 @@ func App() *buffalo.App {
 		app.GET("/", HomeHandler)
 		app.GET("/swagger/{doc:.*}", buffaloSwagger.WrapHandler(swaggerFiles.Handler))
 
+		app.Resource("/widgets", WidgetsResource{})
 	}
 
 	return app
